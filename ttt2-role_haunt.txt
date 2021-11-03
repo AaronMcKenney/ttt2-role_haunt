@@ -1,0 +1,46 @@
+[i]The first rule of being a Traitor is to not get caught. The second rule is to kill your witnesses as soon as possible, because no one gets the first rule right. The third rule is to have a good back-up plan, because everyone makes mistakes and leaves bloody messes. The fourth, and most important rule, is to carefully read over every single word on your contract with the Devil, because no traitor worht their salt comes up with a [/i]good[i] back-up plan.[/i]
+ 
+You have to use [URL=https://steamcommunity.com/sharedfiles/filedetails/?id=1357204556]TTT2[/URL] in order to use this role. Additionally using [URL=https://steamcommunity.com/sharedfiles/filedetails/?id=1362430347]ULX for TTT2[/URL] is recommended. Report bugs concerning this role [URL=https://github.com/AaronMcKenney/ttt2-role_haunt]here[/URL] and submit new role ideas [URL=https://github.com/TTT-2/addon-ideas]here[/URL]. A list of all currently available roles can be found [URL=https://steamcommunity.com/sharedfiles/filedetails/?id=1737053146]here[/URL].
+ 
+Discord: [url=https://discord.gg/Npcbb4W]https://discord.gg/Npcbb4W[/url]
+Source: [url=https://github.com/AaronMcKenney/ttt2-role_haunt]https://github.com/AaronMcKenney/ttt2-role_haunt[/url]
+ 
+ 
+[img]https://i.imgur.com/KeP4fWN.png[/img]
+ 
+The Haunted is a traitor role. If they are killed, they will haunt their killer. Their killer will leave a trail of smoke, and if they are killed The Haunted shall come back to life. As this ability is quite powerful, the Haunted starts the game with 0 credits (but can gain and use them as the match progresses).
+ 
+[img]https://i.imgur.com/jIBWtbM.png[/img]
+ 
+Convars are variables that are introduced to allow server owners to customize the gameplay without changing the code. There are always a handful of convars automatically created by TTT2, that define the spawn parameters of this role and are found in ULX. Additionally there might be some role specific convars, which have to be set in the server config file.
+ 
+[h1]Normal Role Convars (also found in ULX):[/h1]
+[code]# enable or disable this role
+  ttt_haunted_enabled [0/1] (default: 1)
+# the percentage of players that are spawned as this role
+  ttt_haunted_pct [0.0..1.0] (default: 0.17)
+# the limit of players that spawn as this role each round, this overwrites the percentage
+  ttt_haunted_max [0..n] (default: 1)
+# the probability each round of this role being spawned at all
+  ttt_haunted_random [0..100] (default: 30)
+# the amount of players needed for this role to spawn
+  ttt_haunted_min_players: [0..n] (default: 6)[/code]
+ 
+[h1]Rolespecific Convars:[/h1]
+[code]# Who should see announcements about hauntings?
+  ttt2_haunted_declare_mode [0..2] (default: 2)
+  # 0: Don't declare the Haunted's status.
+  # 1: Declare the Haunted's status to every player.
+  # 2: Declare the Haunted's status to only traitors
+# How much health should the Haunted revive with?
+  ttt2_haunted_revive_health [0..n] (default: 50)
+# Should players leave a trail of smoke if they are currently being haunted?
+  ttt2_haunted_smoke_mode [0/1] (default: 1)
+# Should the Haunted respawn at worldspawn or their body?
+  ttt2_haunted_worldspawn [0/1] (default: 0)[/code]
+ 
+--
+[h1]Credits:[/h1]
+[URL=https://steamcommunity.com/profiles/76561198025772353/]BlackMagicFine[/URL]: creator of this role addon
+[URL=https://steamcommunity.com/id/Zzzaaaccc13/]Wasted[/URL]: designer of the Spectre, which this role reuses a lot of code from
+[URL=https://steamcommunity.com/profiles/76561198037611833]Haxray[/URL]: came up with the idea for the Haunted
