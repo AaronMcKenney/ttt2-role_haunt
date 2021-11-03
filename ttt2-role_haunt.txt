@@ -18,7 +18,7 @@ Convars are variables that are introduced to allow server owners to customize th
 [code]# enable or disable this role
   ttt_haunted_enabled [0/1] (default: 1)
 # the percentage of players that are spawned as this role
-  ttt_haunted_pct [0.0..1.0] (default: 0.17)
+  ttt_haunted_pct [0.0..1.0] (default: 0.15)
 # the limit of players that spawn as this role each round, this overwrites the percentage
   ttt_haunted_max [0..n] (default: 1)
 # the probability each round of this role being spawned at all

@@ -25,7 +25,7 @@ function ROLE:PreInitialize()
 	self.defaultEquipment = TRAITOR_EQUIPMENT
 	
 	self.conVarData = {
-		pct = 0.17, -- necessary: percentage of getting this role selected (per player)
+		pct = 0.15, -- necessary: percentage of getting this role selected (per player)
 		maximum = 1, -- maximum amount of roles in a round
 		minPlayers = 6, -- minimum amount of players until this role is able to get selected
 		togglable = true, -- option to toggle a role for a client if possible (F1 menu)
@@ -83,34 +83,12 @@ if SERVER then
 		end
 	end
 	
-	--Note: Have to put a hook on DoPlayerDeath instead of TTT2PostPlayerDeath as we override EVENT_KILL, which is issed in DoPlayerDeath
-	hook.Add("DoPlayerDeath", "DoPlayerDeathHaunted", function(ply, attacker, dmgInfo)
-		if not IsValid(ply) or not IsValid(attacker) or not attacker:IsPlayer() then return end
-		if SpecDM and (ply:IsGhost() or attacker:IsGhost()) then return end
-		if GetRoundState() ~= ROUND_ACTIVE then return end
-		if ply == attacker then return end
-		if ply:GetSubRole() ~= ROLE_HAUNTED then return end
-		
-		attacker.haunt_haunted_by = ply:SteamID64()
-		STATUS:AddStatus(attacker, "haunt_haunted_status")
-		events.Trigger(EVENT_HAUNT_HAUNT, ply, attacker, dmgInfo)
-		SendHauntedNotification(ply, POPUP_MODE.DEATH, attacker)
-		
-		if GetConVar("ttt2_haunted_smoke_mode"):GetBool() then
-			attacker:SetNWBool("haunt_is_smoking", true)
-		end
-	end)
-	
-	hook.Add("TTT2PostPlayerDeath", "TTT2PostPlayerDeathHaunted", function(dead_ply)
-		if not IsValid(dead_ply) or not dead_ply.haunt_haunted_by then
-			return
-		end
-		
+	local function AttemptHauntedRevival(dead_ply)
 		local plys = player.GetAll()
 		for i = 1, #plys do
 			local ply = plys[i]
 			
-			if ply:SteamID64() == dead_ply.haunt_haunted_by and ply:GetSubRole() == ROLE_HAUNTED then
+			if ply:SteamID64() == dead_ply.haunt_haunted_by and ply:GetSubRole() == ROLE_HAUNTED and (not ply:Alive() or IsInSpecDM(ply)) then
 				local spawn_pos = nil
 				local spawn_eye_ang = nil
 				if GetConVar("ttt2_haunted_worldspawn"):GetBool() then
@@ -135,7 +113,6 @@ if SERVER then
 						ply:ResetConfirmPlayer()
 						SendFullStateUpdate()
 						SendHauntedNotification(ply, POPUP_MODE.REVIVE)
-						events.Trigger(EVENT_HAUNT_REVIVE, ply)
 					end,
 					function(ply) --DoCheck function
 						--Return false (do not go through with the revival) if doing so could cause issues
@@ -147,7 +124,33 @@ if SERVER then
 					spawn_pos, --The player's respawn point (If nil, will be their corpse if present, and their point of death otherwise)
 					spawn_eye_ang --spawnEyeAngle
 				)
+				
+				return
 			end
+		end
+	end
+	
+	local function HauntPlayer(dead_ply, attacker)
+		attacker.haunt_haunted_by = dead_ply:SteamID64()
+		STATUS:AddStatus(attacker, "haunt_haunted_status")
+		SendHauntedNotification(dead_ply, POPUP_MODE.DEATH, attacker)
+		
+		if GetConVar("ttt2_haunted_smoke_mode"):GetBool() then
+			attacker:SetNWBool("haunt_is_smoking", true)
+		end
+	end
+	
+	hook.Add("TTT2PostPlayerDeath", "TTT2PostPlayerDeathHaunted", function(dead_ply, infl, attacker)
+		if GetRoundState() ~= ROUND_ACTIVE or not IsValid(dead_ply) or not dead_ply:IsPlayer() or IsInSpecDM(dead_ply) or not IsValid(attacker) or not attacker:IsPlayer() or IsInSpecDM(attacker) then
+			return
+		end
+		
+		if dead_ply:GetSubRole() == ROLE_HAUNTED then
+			HauntPlayer(dead_ply, attacker)
+		end
+		
+		if dead_ply.haunt_haunted_by then
+			AttemptHauntedRevival(dead_ply)
 		end
 	end)
 	
