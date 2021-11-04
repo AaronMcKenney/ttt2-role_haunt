@@ -88,7 +88,7 @@ if SERVER then
 		for i = 1, #plys do
 			local ply = plys[i]
 			
-			if ply:SteamID64() == dead_ply.haunt_haunted_by and ply:GetSubRole() == ROLE_HAUNTED and (not ply:Alive() or IsInSpecDM(ply)) then
+			if ply:GetSubRole() == ROLE_HAUNTED and (not ply:Alive() or IsInSpecDM(ply)) and ply:SteamID64() == dead_ply.haunt_haunted_by then
 				local spawn_pos = nil
 				local spawn_eye_ang = nil
 				if GetConVar("ttt2_haunted_worldspawn"):GetBool() then
@@ -145,7 +145,7 @@ if SERVER then
 			return
 		end
 		
-		if dead_ply:GetSubRole() == ROLE_HAUNTED then
+		if dead_ply:GetSubRole() == ROLE_HAUNTED and dead_ply:SteamID64() ~= attacker:SteamID64() then
 			HauntPlayer(dead_ply, attacker)
 		end
 		
@@ -176,6 +176,7 @@ if SERVER then
 			
 			ply.haunt_haunted_by = nil
 			ply:SetNWBool("haunt_is_smoking", false)
+			STATUS:RemoveStatus(ply, "haunt_haunted_status")
 		end
 	end
 	hook.Add("TTTPrepareRound", "TTTPrepareRoundHauntedServer", ResetHauntedDataForServer)
