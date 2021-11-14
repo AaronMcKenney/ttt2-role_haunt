@@ -42,5 +42,7 @@ Convars are variables that are introduced to allow server owners to customize th
 --
 [h1]Credits:[/h1]
 [URL=https://steamcommunity.com/profiles/76561198025772353/]BlackMagicFine[/URL]: creator of this role addon
+[URL=https://steamcommunity.com/id/mineotopia]Mineotopia[/URL]: designer of the role thumbnail
+[URL=https://www.kindpng.com/imgv/mJmihT_haunted-house-haunted-house-symbol-hd-png-download/]KindPNG Haunted House Symbol[/URL]: role icon created by modifying this image
 [URL=https://steamcommunity.com/id/Zzzaaaccc13/]Wasted[/URL]: designer of the Spectre, which this role reuses a lot of code from
 [URL=https://steamcommunity.com/profiles/76561198037611833]Haxray[/URL]: came up with the idea for the Haunted

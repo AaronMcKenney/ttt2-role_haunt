@@ -7,7 +7,7 @@ if SERVER then
 end
 
 function ROLE:PreInitialize()
-	--Dark Salmon color
+	--Dark Salmon color (shows up as a sort-of light Halloween color in-game, and forces the icon to be black instead of white)
 	self.color = Color(255, 150, 122, 255)
 	self.abbr = "haunt"
 	
