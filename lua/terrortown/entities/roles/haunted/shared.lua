@@ -18,11 +18,14 @@ function ROLE:PreInitialize()
 	self.score.teamKillsMultiplier = -16
 	self.score.bodyFoundMuliplier = 0
 	
-	--The Haunted can receive credits normally
-	self.preventFindCredits = false
+	--Prevent the Hautned from gaining credits normally.
+	self.preventFindCredits = true
 	
 	self.defaultTeam = TEAM_TRAITOR
 	self.defaultEquipment = TRAITOR_EQUIPMENT
+	
+	--This role can see which players are missing in action as well as the haste timer.
+	self.isOmniscientRole = true
 	
 	self.conVarData = {
 		pct = 0.15, -- necessary: percentage of getting this role selected (per player)
@@ -32,11 +35,11 @@ function ROLE:PreInitialize()
 		random = 30,
 		traitorButton = 1, -- can use traitor buttons
 		
-		--Haunted starts with 0 credits, but can gain credits later on.
+		--Haunted can't access shop, and has no credits.
 		credits = 0,
-		creditsAwardDeadEnable = 1,
-		creditsAwardKillEnable = 1,
-		shopFallback = SHOP_FALLBACK_TRAITOR
+		creditsAwardDeadEnable = 0,
+		creditsAwardKillEnable = 0,
+		shopFallback = SHOP_DISABLED
 	}
 end
 

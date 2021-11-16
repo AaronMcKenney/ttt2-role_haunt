@@ -8,7 +8,7 @@ Source: [url=https://github.com/AaronMcKenney/ttt2-role_haunt]https://github.com
  
 [img]https://i.imgur.com/KeP4fWN.png[/img]
  
-The Haunted is a traitor role. If they are killed, they will haunt their killer. Their killer will leave a trail of smoke, and if they are killed The Haunted shall come back to life. As this ability is quite powerful, the Haunted starts the game with 0 credits (but can gain and use them as the match progresses).
+The Haunted is a traitor role. If they are killed, they will haunt their killer. Their killer will leave a trail of smoke, and if they are killed The Haunted shall come back to life. As this ability is quite powerful, the Haunted does not have access to a shop by default.
  
 [img]https://i.imgur.com/jIBWtbM.png[/img]
  
