@@ -8,7 +8,7 @@ L["info_popup_" .. HAUNTED.name] = [[You are a Haunted! You haunt people who kil
 L["body_found_" .. HAUNTED.abbr] = "They were a Haunted!"
 L["search_role_" .. HAUNTED.abbr] = "This person was a Haunted!"
 L["target_" .. HAUNTED.name] = "Haunted"
-L["ttt2_desc_" .. HAUNTED.name] = [[The Haunted is an innocent who revives after their killer dies!]]
+L["ttt2_desc_" .. HAUNTED.name] = [[The Haunted is an traitor who revives after their killer dies!]]
 
 --OTHER ROLE LANGUAGE STRINGS
 L["ttt2_haunted_killed_title"] = "A Haunted has been killed!"
