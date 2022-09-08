@@ -122,7 +122,7 @@ if SERVER then
 						return GetRoundState() == ROUND_ACTIVE and (not ply:Alive() or IsInSpecDM(ply))
 					end,
 					false, --needsCorpse
-					true, --blocksRound (Prevents anyone from winning during respawn delay)
+					REVIVAL_BLOCK_AS_ALIVE, --blocksRound (Prevents anyone from winning during respawn delay)
 					nil, --OnFail function
 					spawn_pos, --The player's respawn point (If nil, will be their corpse if present, and their point of death otherwise)
 					spawn_eye_ang --spawnEyeAngle
