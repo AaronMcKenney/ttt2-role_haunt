@@ -259,4 +259,44 @@ if CLIENT then
 			DoSmoke()
 		end
 	end)
+
+	-------------
+	-- CONVARS --
+	-------------
+	function ROLE:AddToSettingsMenu(parent)
+		local form = vgui.CreateTTT2Form(parent, "header_roles_additional")
+
+		form:MakeComboBox({
+			serverConvar = "ttt2_haunted_declare_mode",
+			label = "label_haunted_declare_mode",
+			choices = {{
+				value = 0,
+				title = LANG.GetTranslation("label_haunted_declare_mode_0")
+			},{
+				value = 1,
+				title = LANG.GetTranslation("label_haunted_declare_mode_1")
+			},{
+				value = 2,
+				title = LANG.GetTranslation("label_haunted_declare_mode_2")
+			}}
+		})
+
+		form:MakeSlider({
+			serverConvar = "ttt2_haunted_revive_health",
+			label = "label_haunted_revive_health",
+			min = 1,
+			max = 100,
+			decimal = 0
+		})
+
+		form:MakeCheckBox({
+			serverConvar = "ttt2_haunted_smoke_mode",
+			label = "label_haunted_smoke_mode"
+		})
+
+		form:MakeCheckBox({
+			serverConvar = "ttt2_haunted_worldspawn",
+			label = "label_haunted_worldspawn"
+		})
+	end
 end

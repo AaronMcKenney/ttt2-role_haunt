@@ -24,3 +24,12 @@ L["desc_haunt_haunt"] = "{victim} haunted {attacker}."
 L["tooltip_haunt_haunt_score"] = "Killed a Haunted: {score}"
 L["title_haunt_revive"] = "A Haunted revived."
 L["desc_haunt_revive"] = "{haunted} respawned."
+
+--CONVAR STRINGS
+L["label_haunted_declare_mode"] = "Announcements about hauntings are shown to"
+L["label_haunted_declare_mode_0"] = "0: No one"
+L["label_haunted_declare_mode_1"] = "1: All players"
+L["label_haunted_declare_mode_2"] = "2: Traitors only"
+L["label_haunted_revive_health"] = "The Haunted's health upon revival"
+L["label_haunted_smoke_mode"] = "Haunted's killer leaves trail of smoke"
+L["label_haunted_worldspawn"] = "Haunted's respawn location is random"
