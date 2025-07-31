@@ -18,8 +18,8 @@ function ROLE:PreInitialize()
 	self.score.teamKillsMultiplier = -16
 	self.score.bodyFoundMuliplier = 0
 	
-	--Prevent the Hautned from gaining credits normally.
-	self.preventFindCredits = true
+	--The Haunted may loot credits off corpses, but only if the admin gives them a shop.
+	self.preventFindCredits = false
 	
 	self.defaultTeam = TEAM_TRAITOR
 	self.defaultEquipment = TRAITOR_EQUIPMENT
